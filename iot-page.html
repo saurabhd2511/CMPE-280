@@ -8,27 +8,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>IoT/IoE Landing Page</title>
-
-   
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    
     <link href="css/modern-business.css" rel="stylesheet">
-
-   
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style>
+.bg-1{
+    background-color: #f4511e; /* Orange */
+    color: #ffffff;
+}
 
-   
+.yellow{
+    color:yellow;
+}
+.grey{
+    color: grey;
+}
+.bg-page{
+    background-color: #99FFCC;
+}
+.bg-head{
+    background-color: #008080;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
 
+
+.panel {
+    border: 1px solid #f4511e; 
+    border-radius:0;
+    transition: box-shadow 0.5s;
+}
+
+.panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+.panel-footer .btn:hover {
+    border: 1px solid #f4511e;
+    background-color: #fff !important;
+    color: #f4511e;
+}
+
+.panel-heading {
+    color: #fff !important;
+    background-color: #f4511e !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.panel-footer {
+    background-color: #fff !important;
+}
+
+.panel-footer h3 {
+    font-size: 32px;
+}
+
+.panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.panel-footer .btn {
+    margin: 15px 0;
+    background-color: #f4511e;
+    color: #fff;
+}
+    </style>
 </head>
 <body>
-
-    
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-           
+        <div class="container">     
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -84,23 +141,145 @@
         </div>
     </nav>
 
-    <div class="container">
-        <hr>
+    <div class="container-fluid bg-head">
+        <h3 class="text-center bg-head">Internet of Things</h3>
+    </div>
+    <div class="container-fluid bg-page">
         <div class="row">
-            <div class="col-md-12">
-                <center><h3>IoT/IoE</h3><center>
-                &nbsp;  
+            <div class="col-md-2">
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal" style="width:200px;height:70px">Brochure</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             <h4 class="modal-title">Download Brochure</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label align="left" >Firstname:<input type="text"  id="fname" placeholder="firstname"></label><br>
+                                    <label align="left">Lastname:<input type="text" id="lname" placeholder="lastname"></label><br>
+                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" id="email" placeholder="Enter email"></label><br>
+                                </div>
+                                <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <p>Need <a href="#">help?</a></p>
+                        </div>
+                        </div>
+      
+                        </div>
+                    </div>
+                
+                <!--Download paper-->
+                <br><br><br><br><br>
+                    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#iotModal" style="width:200px;height:70px">White Paper</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="iotModal" role="dialog">
+                        <div class="modal-dialog">
+    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             <h4 class="modal-title">Download IOT White Paper</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label align="left" >Firstname:<input type="text"  id="fname" placeholder="firstname"></label><br>
+                                    <label align="left">Lastname:<input type="text" id="lname" placeholder="lastname"></label><br>
+                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" id="email" placeholder="Enter email"></label><br>
+                                </div>
+                                <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <p>Need <a href="#">help?</a></p>
+                        </div>
+                        </div>
+      
+                        </div>
+                    </div>
+
+            </div>
+            <div class="col-md-8 bg-middle ">
                 <p>Gartner defines Internet of Things "is the network of physical objects that contain embedded technology to communicate and sense or interact with their internal states or the external environment."</p>
                 <p>As per Internation Data Corporation (IDC) press release "The Internet of Things is Poised to change everything", the internet of things (IoT) represents a new construct in the information and communications technology (ICT) world that is occupying the minds of IT vendors, service providers, and the system integrators as it represents huge potential for new streams of revenue and new customers.</p>
                 &nbsp;&nbsp;
-                <p>
-                    <video src="https://www.youtube.com/watch?v=59CKzJKQq04"></video>
-                </p>
+                 
+                <div class="container-fluid ">
+                    <div class="text-center">
+                        <h2>Pricing</h2>
+                        <h4>Interested to buy smart device?</h4>
+                    </div>
+                    
+                    <div class="row text center">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <div class="panel panel-default text-center">
+                                <div class="panel-heading">
+                                    <h3>Thermostat</h3>
+                                </div>
+                                    <div class="panel-body">
+                                        <p>Number of sensors<strong>50</strong> </p>
+                                         <p>Data Stream<strong>25kb/sec</strong> </p>
+                                    </div>
+                                    <div class="panel-footer plan">
+                                        <h3>$250</h3>
+                                        <h4>per device</h4>
+                                        <button class="btn btn-lg">Buy now</button>
+                                    </div>
+                                </div> 
+                        </div>
+                        <div class="col-md-3">
+                            <div class="panel panel-default text-center">
+                                <div class="panel-heading">
+                                    <h3>Light Bulb</h3>
+                                </div>
+                                    <div class="panel-body">
+                                        <p>Number of sensors<strong>50</strong> </p>
+                                         <p>Data Stream<strong>25kb/sec</strong> </p>
+                                    </div>
+                                    <div class="panel-footer plan">
+                                        <h3>$29</h3>
+                                        <h4>per device</h4>
+                                        <button class="btn btn-lg">Buy now</button>
+                                    </div>
+
+                            </div> 
+                        </div>
+                    </div>
+                </div>
             </div>
-
-        </div>
-       
-
+            <div class="col-md-2 well">
+                <p class="bg-1">Customer reviews and feedback.<br></p>
+                <ul class="nav nav-list">
+                <li class="bg-info"><a href="#">Very informative webpage about IOT. The papers are thorough and good. I could get a lot of information about IOT<br>
+                <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><br>
+                ...Prajakta Naik</a></li>
+                <li class="bg-success"><a href="#">I got to know about the smart devices used in homes and how we can develop smart homes<br>
+                     <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star grey"></span><br>...Sadhana</a></li>
+                <li class="bg-danger"><a href="#">The papers helped me to understand about the advantages of nest thermostat.Very informative website<br>
+                   <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><br> ...Saurabh</a></li>
+                </ul>
+            </div>
+        </div>   
+</div>
+    </div>
         <hr>
 
         <footer>
