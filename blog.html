@@ -71,7 +71,20 @@
         
         <div class="row">
             <div class="col-md-2" >
-                Previous Published Blogs Links
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                        <h5 class="list-group-item-heading">Best vacaction spot in 2015</h5>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">All about Socket.IO</h5>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">Websockets is in</h5>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">Local Storage</h5>
+                    </a>
+                </div>
             </div>        
 
             <div class="col-md-8" >
@@ -93,69 +106,93 @@
                     </div>
                 </div>
                 <hr>
+        
+                <div class="row">
+                    <div class="col-md-6 col-centered">
+                            <form class="form-horizontal" action="javascript:AddNewComment()">
+
+                                <div class="form-group">
+                                    <input type="text" required class="form-control" id="title" placeholder="Title" />
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea class="form-control"  rows="7" required id="comment" placeholder="Your Comments"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Add Comment</button>
+
+                            </form>
+                    </div>
+                </div>
+
+                <br>        
+
+                <div class="row">
+                    <div class="col-md-8 col-centered">
+
+                        <div id="newComment"></div>
+
+                        <div class="media">
+                            <a class="pull-right" href="#">
+                                <img class="media-object" src="./img/Person1.png">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Wow great article!</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            </div>	            
+                        </div>
+
+
+                        <!-- Second Media Object -->
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="./img/Person2.png">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Your article sucks!</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             
             </div>       
                 
             <div class="col-md-2" >
-                Related technology
-            </div>   
-            
-        </div>
-        
-        <div class="row">
-            <div class="col-md-6 col-centered">
-                    <form class="form-horizontal" action="javascript:AddNewComment()">
-
-                        <div class="form-group">
-                                <div class="col-xs-10">
-                                        <input type="text" required class="form-control" id="title" placeholder="Title" />
-                                </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <div class="col-xs-10">
-                                <textarea class="form-control"  rows="7" required id="comment" placeholder="Your Comments"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-10 col-centered">
-                            <button type="submit" class="btn btn-primary">Add Comment</button>
-                        </div>
-
-                    </form>
-            </div>
-        </div>
-        
-        <br>        
-        
-        <div class="row">
-            <div class="col-md-6 col-centered">
                 
-                <div id="newComment"></div>
-                
-		<div class="media">
-                    <a class="pull-right" href="#">
-	    		<img class="media-object" src="./img/Person1.png">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Wow great article!</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>	            
-	    	</div>
-                
-                	
-                <!-- Second Media Object -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="./img/Person2.png">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Your article sucks!</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <div class="row">
+                    <div class="thumbnail">
+                        <img src="./img/BigData.png">
+                        <div class="caption">
+                            <h3>Big Data</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p><a href="http://www.ibm.com/big-data/us/en/" class="btn btn-primary">Read More</a></p>
+                        </div>
                     </div>
                 </div>
-                
-            </div>
+                <div class="row">
+                    <div class="thumbnail">
+                        <img src="./img/IOT.png">
+                        <div class="caption">
+                            <h3>IOT</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p><a href="http://www.forbes.com/sites/centurylink/2015/10/23/welcome-to-the-iot-please-check-your-security-at-the-door/" class="btn btn-primary">Read More</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="thumbnail">
+                        <img src="./img/Mobile.png">
+                        <div class="caption">
+                            <h3>Mobile Cloud</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p><a href="https://experitest.com/top-10-benefits-of-cloud-testing/" class="btn btn-primary">Read More</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            
         </div>
         
         
