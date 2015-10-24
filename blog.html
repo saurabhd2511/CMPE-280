@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Blog Page</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="css/darrel.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script>
+        
+        var person = true;
+        
+        function AddNewComment()
+        {
+            var personImage;
+            var positionImage;
+            var positionText;
+            if( person )
+            {
+                personImage = "Person2.png";
+                positionImage = "pull-left";
+                positionText = "text-left";
+                
+            }
+            else
+            {
+                personImage = "Person1.png";
+                positionImage = "pull-right";
+                positionText = "text-right";
+            }
+            person = !person;
+            
+            
+            $( "#newComment" ).prepend( 
+
+                "<div class='media'> <a class='" +
+                positionImage +
+                "'href='#'> <img class='media-object' src='./img/" +
+                personImage +
+                "'> </a> <div class='media-body "+
+                positionText +
+                "'> <h4 class='media-heading'>" +
+                $( "#title" ).val() +
+                "</h4> <p>" +
+                $( "#comment" ).val() +                            
+                "</p> </div> </div>"
+            );
+        }
+    </script>
+
+</head>
+
+<body>
+    
+    <!-- Load header -->    
+    <div id="header"></div>
+    <br>
+    
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-2" >
+                Previous Published Blogs Links
+            </div>        
+
+            <div class="col-md-8" >
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img class="img-responsive" src="./img/vacation.png">
+                        <h4>The best vacation spot in 2015?</h4>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    </div>
+                    <div class="panel-footer">
+                        <div class="media">
+                            <div class="pull-left">
+                                <img class="media-object" src="./img/avatar1.png">
+                            </div>
+                            <div class="media-body">
+                                <p><small> by</small> Darrel Pham | Oct 23rd, 2015</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            
+            </div>       
+                
+            <div class="col-md-2" >
+                Related technology
+            </div>   
+            
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 col-centered">
+                    <form class="form-horizontal" action="javascript:AddNewComment()">
+
+                        <div class="form-group">
+                                <div class="col-xs-10">
+                                        <input type="text" required class="form-control" id="title" placeholder="Title" />
+                                </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-xs-10">
+                                <textarea class="form-control"  rows="7" required id="comment" placeholder="Your Comments"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-10 col-centered">
+                            <button type="submit" class="btn btn-primary">Add Comment</button>
+                        </div>
+
+                    </form>
+            </div>
+        </div>
+        
+        <br>        
+        
+        <div class="row">
+            <div class="col-md-6 col-centered">
+                
+                <div id="newComment"></div>
+                
+		<div class="media">
+                    <a class="pull-right" href="#">
+	    		<img class="media-object" src="./img/Person1.png">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">Wow great article!</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>	            
+	    	</div>
+                
+                	
+                <!-- Second Media Object -->
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="./img/Person2.png">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">Your article sucks!</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <hr>
+            <div id="twitter"></div>
+            <hr>
+        </div>
+    
+        <br>        
+        <!-- Load header -->    
+        <div id="footer"></div>
+    </div>
+        
+</body>
+
+
+
+<script>
+    $("#header").load("header.html");
+    $("#twitter").load("twitter.html");
+    $("#footer").load("footer.html");
+</script>
+
+</html>
