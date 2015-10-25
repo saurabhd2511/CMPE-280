@@ -1,3 +1,9 @@
+<!--
+Darrel Pham
+CMPE 280
+Fall 2015
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,14 +25,28 @@
     
     <script>
         
-        var person = true;
+        var person = 1;
         
-        function AddNewComment()
+        function AddNewComment( )
+        {
+            var title = $( "#title" ).val();
+            var comment = $( "#comment" ).val();
+        
+            person += 1;
+            if( person > 1 )
+            {
+                person = 0;
+            }
+            InsertWebSql( person, title, comment );
+            AppendComment( person, title, comment );
+        }
+        
+        function AppendComment( type, title, comment )
         {
             var personImage;
             var positionImage;
             var positionText;
-            if( person )
+            if( type === 0 )
             {
                 personImage = "Person2.png";
                 positionImage = "pull-left";
@@ -39,8 +59,6 @@
                 positionImage = "pull-right";
                 positionText = "text-right";
             }
-            person = !person;
-            
             
             $( "#newComment" ).prepend( 
 
@@ -51,12 +69,63 @@
                 "'> </a> <div class='media-body "+
                 positionText +
                 "'> <h4 class='media-heading'>" +
-                $( "#title" ).val() +
+                title +
                 "</h4> <p>" +
-                $( "#comment" ).val() +                            
+                comment +                            
                 "</p> </div> </div>"
-            );
+            );            
         }
+            
+        function QueryWebSql()
+        {   
+            var bloDb = window.openDatabase( "LiveWireGroupAssignment", "1.0", "Blog Demo", 1024*1024*3 );
+            var query = 'SELECT * FROM blogVacation';
+
+            bloDb.transaction( function( txaction ) 
+                                        { 
+                                            txaction.executeSql( query, [], function( tx, results ) 
+                                                                            {
+                                                                                var length = results.rows.length;
+                                                                                for( var i = 0; i < length; ++i )
+                                                                                {
+                                                                                    var title = unescape( results.rows.item( i ).title );
+                                                                                    var comment = unescape( results.rows.item( i ).comment );
+                                                                                    person = results.rows.item( i ).person;
+                                                                                    AppendComment( person, title, comment );
+                                                                                    console.log( person + person );
+                                                                                }
+                                                                            } );
+                                        } );
+        }
+            
+        function InsertWebSql( person, title, comment )
+        {
+            var bloDb = window.openDatabase( "LiveWireGroupAssignment", "1.0", "Blog Demo", 1024*1024*3 );
+
+            bloDb.transaction( function( query ) 
+                                        { 
+                                            query.executeSql( 'CREATE TABLE IF NOT EXISTS blogVacation ( id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(255) NOT NULL, comment VARCHAR(255) NOT NULL, person INT NOT NULL );' );
+                                        } );
+
+            var query = 'INSERT INTO blogVacation ( title, comment, person ) VALUES ( ';
+
+            query += '"' + escape( title ) + '",';
+            query += '"' + escape( comment ) + '",';
+            query += person; 
+            query += ');';
+
+
+            bloDb.transaction(  
+                function( txaction ) 
+                { 
+                    txaction.executeSql( query );
+                } 
+            );
+
+        }
+        
+        document.onload = QueryWebSql();
+        
     </script>
 
 </head>
@@ -72,16 +141,16 @@
         <div class="row">
             <div class="col-md-2" >
                 <div class="list-group">
-                    <a href="#" class="list-group-item active">
+                    <a href="blogVacation.html" class="list-group-item active">
                         <h5 class="list-group-item-heading">Best vacaction spot in 2015</h5>
                     </a>
-                    <a href="#" class="list-group-item">
+                    <a href="blogSocketIo.html" class="list-group-item">
                         <h5 class="list-group-item-heading">All about Socket.IO</h5>
                     </a>
-                    <a href="#" class="list-group-item">
+                    <a href="blogWebSocket.html" class="list-group-item">
                         <h5 class="list-group-item-heading">Websockets is in</h5>
                     </a>
-                    <a href="#" class="list-group-item">
+                    <a href="blogLocalStorage.html" class="list-group-item">
                         <h5 class="list-group-item-heading">Local Storage</h5>
                     </a>
                 </div>
@@ -116,10 +185,10 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <textarea class="form-control"  rows="7" required id="comment" placeholder="Your Comments"></textarea>
+                                    <textarea class="form-control"  rows="7" required id="comment" placeholder="Your Comments -> Saved to WebSQL"></textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Add Comment</button>
+                                <button type="submit" class="btn btn-primary">Add Comment (Try it)</button>
 
                             </form>
                     </div>
@@ -129,8 +198,8 @@
 
                 <div class="row">
                     <div class="col-md-8 col-centered">
-
-                        <div id="newComment"></div>
+                        <br>
+                        <div id="newComment"></div>                        
 
                         <div class="media">
                             <a class="pull-right" href="#">
