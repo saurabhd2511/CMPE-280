@@ -23,7 +23,7 @@ Fall 2015
 
     <script src="js/bootstrap.min.js"></script>
     
-    <script>
+    <script>        
         
         var person = 1;
         
@@ -37,7 +37,7 @@ Fall 2015
             {
                 person = 0;
             }
-            InsertWebSql( person, title, comment );
+            InsertMySql( person, title, comment );
             AppendComment( person, title, comment );
         }
         
@@ -79,7 +79,7 @@ Fall 2015
         function QueryWebSql()
         {   
             var bloDb = window.openDatabase( "LiveWireGroupAssignment", "1.0", "Blog Demo", 1024*1024*3 );
-            var query = 'SELECT * FROM blogSocketIo';
+            var query = 'SELECT * FROM blogVacation';
 
             bloDb.transaction( function( txaction ) 
                                         { 
@@ -92,7 +92,6 @@ Fall 2015
                                                                                     var comment = unescape( results.rows.item( i ).comment );
                                                                                     person = results.rows.item( i ).person;
                                                                                     AppendComment( person, title, comment );
-                                                                                    console.log( person + person );
                                                                                 }
                                                                             } );
                                         } );
@@ -104,10 +103,10 @@ Fall 2015
 
             bloDb.transaction( function( query ) 
                                         { 
-                                            query.executeSql( 'CREATE TABLE IF NOT EXISTS blogSocketIo ( id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(255) NOT NULL, comment VARCHAR(255) NOT NULL, person INT NOT NULL );' );
+                                            query.executeSql( 'CREATE TABLE IF NOT EXISTS blogVacation ( id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(255) NOT NULL, comment VARCHAR(255) NOT NULL, person INT NOT NULL );' );
                                         } );
 
-            var query = 'INSERT INTO blogSocketIo ( title, comment, person ) VALUES ( ';
+            var query = 'INSERT INTO blogVacation ( title, comment, person ) VALUES ( ';
 
             query += '"' + escape( title ) + '",';
             query += '"' + escape( comment ) + '",';
@@ -123,8 +122,86 @@ Fall 2015
             );
 
         }
+            
+        function QueryMySql()
+        {
+            try
+            {
+                var blogData = {};
+                blogData['blogType']    = "socketIo";
+
+                httpRequest = new XMLHttpRequest();
+                httpRequest.onreadystatechange = handleQueryResponse;
+                httpRequest.open( "POST", "http://localhost:8080/blog/getBlog" );
+                httpRequest.setRequestHeader( "Content-Type", "application/json" );
+                httpRequest.send( JSON.stringify( blogData ) ); 
+            }
+            catch( err )
+            {
+                document.write( "Oh no something bad happened. Please try again later." );
+            }
+        }
+
+        function handleQueryResponse() 
+        {
+            if( httpRequest.readyState === 4 && httpRequest.status === 200 )
+            {
+                var responses = JSON.parse( httpRequest.responseText );
+                if( responses )
+                {
+                    console.log( responses );
+                    for( var i = 0; i < httpRequest.responseText.length; i++ )
+                    {
+                        var response = responses[i];
+                        if( response )
+                        {
+                            console.log( response );
+                            var title = response.title;
+                            var comment = response.comment;
+                            var iconType = response.person;
+                            if( title !== null && comment !== null && iconType !== null )
+                            {
+                                person = iconType;
+                                AppendComment( iconType, title, comment );
+                            }
+                            else
+                            {
+                                document.getElementById( "error" ).style.visibility = "visible";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    document.getElementById( "error" ).style.visibility = "visible";
+                }
+            }
+        }
+            
+        function InsertMySql( person, title, comment )
+        {
+            var blogData = {};
+            blogData['blogType']    = "socketIo";
+            blogData['title']       = title;
+            blogData['comment']     = comment;
+            blogData['person']      = person;
+
+            httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = handleInsertResponse;
+            httpRequest.open( "POST", "http://localhost:8080/blog/saveBlog" );
+            httpRequest.setRequestHeader( "Content-Type", "application/json" );
+            httpRequest.send( JSON.stringify( blogData ) ); 
+        }
+            
+        function handleInsertResponse() 
+        {
+            if( httpRequest.readyState === 4 && httpRequest.status === 200 )
+            {
+                console.log( JSON.parse( httpRequest.responseText ).response );
+            }
+        }
         
-        document.onload = QueryWebSql();
+        document.onload = QueryMySql();
         
     </script>
 
@@ -192,6 +269,8 @@ Fall 2015
 
                             </form>
                     </div>
+                    
+                    <label id="error" style="visibility: hidden; color: red;">Comment cannot be retrieved.</label>
                 </div>
 
                 <br>        
