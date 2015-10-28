@@ -8,23 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Big Data Landing Page</title>
-
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <link href="css/modern-business.css" rel="stylesheet">
-
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-  
-
+    <link href="css/styles.css" rel="stylesheet">
 </head>
-
-<body>
-
+<body background="test5.jpg">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
+        <div class="container">     
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -34,6 +26,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html"><img src="./img/logo.png"></img></a>
             </div>
+            
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -57,7 +50,7 @@
                     </li><li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>
+                             <li>
                                 <a href="management.html">Management</a>
                             </li>
                             <li>
@@ -82,24 +75,117 @@
         </div>
     </nav>
 
-    <div class="container">
-        <hr>
+    <div class="container-fluid bg-head">
+        <h3 class="text-center bg-head">Big Data</h3>
+    </div>
+    <div class="container-fluid bg-page">
         <div class="row">
-            <div class="col-md-12">
-                <center><h3>Big Data</h3><center>
-                    &nbsp;
-                <p>According to IDC's prediction in 2013, the market for big data will reach $16.1 billion in 2014, growing 6 times faster than the overall IT marker. This kind of business analysis reports bring great business opportunities and strong research interests among both academic and industry communities. Recently our Big Data Sciences and Analytics, and Big Data Technology and Engineering.</p>
-                &nbsp;&nbsp;
-                <p>
-                    <video src="./img/Galaxy_Collision_Nasa.mp4"></video>
-                </p>
+            <div class="col-md-2">
+                <br><br><br><!--<br><br><br><br><br><br><br><br><br>-->
+                    <button type="button" class="btn" data-toggle="modal" data-target="#myModal" style="width:200px;height:70px">Brochure</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             <h4 class="modal-title">Download Brochure</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label align="left" >Firstname:<input type="text"  id="fname" placeholder="firstname"></label><br>
+                                    <label align="left">Lastname:<input type="text" id="lname" placeholder="lastname"></label><br>
+                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" id="email" placeholder="Enter email"></label><br>
+                                </div>
+                                <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <p>Need <a href="#">help?</a></p>
+                        </div>
+                        </div>
+      
+                        </div>
+                    </div>
+                
+                <!--Download paper-->
+                <br><br><br><br><br>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#iotModal" style="width:200px;height:70px">White Paper</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="iotModal" role="dialog">
+                        <div class="modal-dialog">
+    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             <h4 class="modal-title">Download Big Data White Paper</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label align="left" >Firstname:<input type="text"  id="fname" placeholder="firstname"></label><br>
+                                    <label align="left">Lastname:<input type="text" id="lname" placeholder="lastname"></label><br>
+                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" id="email" placeholder="Enter email"></label><br>
+                                </div>
+                                <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <p>Need <a href="#">help?</a></p>
+                        </div>
+                        </div>
+      
+                        </div>
+                    </div>
+
             </div>
-
-        </div>
-       
-
+            <div class="col-md-7 bg-middle">
+            <div class="panel-body">
+                <p>According to IDC's prediction in 2013, the market for big data will reach $16.1 billion in 2014, growing 6 times faster than the overall IT marker. This kind of business analysis reports bring great business opportunities and strong research interests among both academic and industry communities. Recently our Big Data Sciences and Analytics, and Big Data Technology and Engineering.</p>
+                
+                <div class="row ">
+                <div class="col-md-4 col-md-offset-2">
+                <p>
+                    <!--<video src="./img/Galaxy_Collision_Nasa.mp4"></video>id="vid" width="450" height="350"-->
+                    <video id="vid" controls poster="./img/bigdata.jpeg">
+                        <source src="./img/Big_Data_Animation_Video.mp4" type="video/mp4">
+                    </video>
+                </p>
+               </div>
+                &nbsp;&nbsp;
+                
+                </div>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <p class="bg-1">Customer Reviews</p>
+                <ul class="nav nav-list">
+                <li class="bg-info">
+                <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star grey"></span><label for="review">No other resource quite like it</label>
+                <p>I've looked at several other books on various aspects of the Big Data ecosystem before, and found most of them to be kind of smack-in-the-middle, and unsuitable for my purposes... -Nivedhitha</p></li>
+                <li class="bg-success">
+                <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star grey"></span><span class="glyphicon glyphicon-star grey"></span></span><label for="review">Very good paper to learn about Big Data</label>
+                <p>For me, this is a very good paper to know all the options out there when it comes to tackling the problem of managing very large quantities of data and emerge unscathed in the attempt... -Hermione</p></li>
+                <li class="bg-danger">
+                <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star grey"></span><label for="review">A nice update to my knowledge I hope to apply soon</label>
+                <p>Deep and detailed description of a complete solution for a massive data tratement system. This kind of architecture is really effective and in fact was applied by me about 20 years ago (when there wee no "big data" systems) to a real time historical stock exchange system,... -Ron</p></li>
+                </ul>
+            </div>
+        </div>   
+</div>
+    </div>
         <hr>
-
 
         <footer>
             <div class="row">
@@ -110,9 +196,8 @@
         </footer>
 
     </div>
-  
+   
     <script src="js/jquery.js"></script>
-
 
     <script src="js/bootstrap.min.js"></script>
 
