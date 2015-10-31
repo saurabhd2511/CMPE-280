@@ -37,7 +37,7 @@ Fall 2015
             {
                 person = 0;
             }
-            InsertMySql( person, title, comment );
+            InsertMongoDb( person, title, comment );
             AppendComment( person, title, comment );
         }
         
@@ -123,7 +123,7 @@ Fall 2015
 
         }
             
-        function QueryMySql()
+        function QueryMongoDb()
         {
             try
             {
@@ -166,19 +166,30 @@ Fall 2015
                             }
                             else
                             {
-                                document.getElementById( "error" ).style.visibility = "visible";
+                                $( "#error" ).attr( "style", "visibility: visible" );
+                                document.getElementById( "error" ).innerHTML = "MongoDb server response invalid. Using WebSql.";
+                                QueryWebSql();
                             }
                         }
                     }
                 }
                 else
                 {
-                    document.getElementById( "error" ).style.visibility = "visible";
+                    $( "#error" ).attr( "style", "visibility: visible" );
+                    document.getElementById( "error" ).innerHTML = "MongoDb server response invalid. Using WebSql.";
+                    QueryWebSql();
                 }
+            }
+            else if( httpRequest.readyState === 4 && httpRequest.status === 0 )
+            {
+                console.log( "twork eror" );
+                $( "#error" ).attr( "style", "visibility: visible; color: red;" );
+                document.getElementById( "error" ).innerHTML = "You have no MongoDb server running with Node JS, please run 'groupAssignment.js'. Defaulting to using WebSql for now.";
+                QueryWebSql();   
             }
         }
             
-        function InsertMySql( person, title, comment )
+        function InsertMongoDb( person, title, comment )
         {
             var blogData = {};
             blogData['blogType']    = "socketIo";
@@ -201,7 +212,7 @@ Fall 2015
             }
         }
         
-        document.onload = QueryMySql();
+        document.onload = QueryMongoDb();
         
     </script>
 
@@ -262,15 +273,16 @@ Fall 2015
                                 </div>
 
                                 <div class="form-group">
-                                    <textarea class="form-control"  rows="7" required id="comment" placeholder="Your Comments -> Saved to WebSQL"></textarea>
+                                    <textarea class="form-control"  rows="7" required id="comment" placeholder="Your Comments -> Saved to NodeJs + Mongob -> Backup WebSQL"></textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Add Comment (Try it)</button>
 
                             </form>
+                        
+                            <br>   
+                            <label id="error" style="visibility: hidden; color: red;">Comments cannot be retrieved.</label>
                     </div>
-                    
-                    <label id="error" style="visibility: hidden; color: red;">Comment cannot be retrieved.</label>
                 </div>
 
                 <br>        
