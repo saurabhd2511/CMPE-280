@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Locations Page</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+var myCenter=new google.maps.LatLng(37.494004,-121.925775);
+function initialize()
+{
+var mapProp = {
+  center: myCenter,
+  zoom:5,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker = new google.maps.Marker({
+  position: myCenter,
+  title:'Click to zoom'
+  });
+marker.setMap(map);
+google.maps.event.addListener(marker,'click',function() {
+  map.setZoom(9);
+  map.setCenter(marker.getPosition());
+  });
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<script>
+var myCenter2=new google.maps.LatLng(17.437483,78.481800);
+function initialize2()
+{
+var mapProp2 = {
+  center: myCenter2,
+  zoom:5,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+var map2 = new google.maps.Map(document.getElementById("googleMap2"),mapProp2);
+
+var marker2 = new google.maps.Marker({
+  position: myCenter2,
+  title:'Click to zoom'
+  });
+marker2.setMap(map2);
+// Zoom to 9 when clicking on marker
+google.maps.event.addListener(marker,'click',function() {
+  map.setZoom(9);
+  map.setCenter(marker2.getPosition());
+  });
+}
+google.maps.event.addDomListener(window, 'load', initialize2);
+</script>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Live Wires</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="mobile-page.html">Mobile</a>
+                            </li>
+                            <li>
+                                <a href="bigdata-page.html">Big Data</a>
+                            </li>
+                            <li>
+                                <a href="iot-page.html">IoE/IoT</a>
+                            </li>
+                        </ul>
+                    </li><li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="management.html">Management</a>
+                            </li>
+                            <li>
+                                <a href="coc.html">Code of Conduct</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-3-col.html">Business Process</a>
+                            </li>
+                            <li>
+                                <a href="location.html">Locations</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">Contact Us</a>
+                            </li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="blogVacation.html">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <center><h3>Locations</h3><center>    
+            </div>
+            <div class="col-md-6">
+                <p>
+                    <h4>Center for Global Software Development & Sarasvathy Learning Centres:: Fremont</h4>
+                </p>
+                <p>
+                    62B Cresent Terrace<br>
+                    Fremont CA 95465<br>
+                    USA
+                </p>
+                <p>
+                    <div id="googleMap" style="width:500px;height:380px;"></div>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p>
+                    <h4>Center for CTO Office:: Secunderabad<br>
+                        1-14/50, Minister Road,<br> 
+                        Secunderabad, T.S,<br>
+                        India
+                    </h4>
+                </p>
+                <br>
+                <p>
+                     <div id="googleMap2" style="width:500px;height:380px;"></div>
+                </p>
+            </div>
+
+        </div>
+        <hr>
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <center><p>Copyright &copy; Live Wires 2015</p><center>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!--
+Darrel Pham
+CMPE 280
+Fall 2015
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Blog Page</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="css/darrel.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script>        
+        
+        var person = 1;
+        
+        function AddNewComment( )
+        {
+            var title = $( "#title" ).val();
+            var comment = $( "#comment" ).val();
+        
+            person += 1;
+            if( person > 1 )
+            {
+                person = 0;
+            }
+            InsertMongoDb( person, title, comment );
+            AppendComment( person, title, comment );
+        }
+        
+        function AppendComment( type, title, comment )
+        {
+            var personImage;
+            var positionImage;
+            var positionText;
+            if( type === 0 )
+            {
+                personImage = "Person2.png";
+                positionImage = "pull-left";
+                positionText = "text-left";
+                
+            }
+            else
+            {
+                personImage = "Person1.png";
+                positionImage = "pull-right";
+                positionText = "text-right";
+            }
+            
+            $( "#newComment" ).prepend( 
+
+                "<div class='media'> <a class='" +
+                positionImage +
+                "'href='#'> <img class='media-object' src='./img/" +
+                personImage +
+                "'> </a> <div class='media-body "+
+                positionText +
+                "'> <h4 class='media-heading'>" +
+                title +
+                "</h4> <p>" +
+                comment +                            
+                "</p> </div> </div>"
+            );            
+        }
+            
+        function QueryWebSql()
+        {   
+            var bloDb = window.openDatabase( "LiveWireGroupAssignment", "1.0", "Blog Demo", 1024*1024*3 );
+            var query = 'SELECT * FROM blogVacation';
+
+            bloDb.transaction( function( txaction ) 
+                                        { 
+                                            txaction.executeSql( query, [], function( tx, results ) 
+                                                                            {
+                                                                                var length = results.rows.length;
+                                                                                for( var i = 0; i < length; ++i )
+                                                                                {
+                                                                                    var title = unescape( results.rows.item( i ).title );
+                                                                                    var comment = unescape( results.rows.item( i ).comment );
+                                                                                    person = results.rows.item( i ).person;
+                                                                                    AppendComment( person, title, comment );
+                                                                                }
+                                                                            } );
+                                        } );
+        }
+            
+        function InsertWebSql( person, title, comment )
+        {
+            var bloDb = window.openDatabase( "LiveWireGroupAssignment", "1.0", "Blog Demo", 1024*1024*3 );
+
+            bloDb.transaction( function( query ) 
+                                        { 
+                                            query.executeSql( 'CREATE TABLE IF NOT EXISTS blogVacation ( id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(255) NOT NULL, comment VARCHAR(255) NOT NULL, person INT NOT NULL );' );
+                                        } );
+
+            var query = 'INSERT INTO blogVacation ( title, comment, person ) VALUES ( ';
+
+            query += '"' + escape( title ) + '",';
+            query += '"' + escape( comment ) + '",';
+            query += person; 
+            query += ');';
+
+
+            bloDb.transaction(  
+                function( txaction ) 
+                { 
+                    txaction.executeSql( query );
+                } 
+            );
+
+        }
+            
+        function QueryMongoDb()
+        {
+            try
+            {
+                var blogData = {};
+                blogData['blogType']    = "socketIo";
+
+                httpRequest = new XMLHttpRequest();
+                httpRequest.onreadystatechange = handleQueryResponse;
+                httpRequest.open( "POST", "http://localhost:8080/blog/getBlog" );
+                httpRequest.setRequestHeader( "Content-Type", "application/json" );
+                httpRequest.send( JSON.stringify( blogData ) ); 
+            }
+            catch( err )
+            {
+                document.write( "Oh no something bad happened. Please try again later." );
+            }
+        }
+
+        function handleQueryResponse() 
+        {
+            if( httpRequest.readyState === 4 && httpRequest.status === 200 )
+            {
+                var responses = JSON.parse( httpRequest.responseText );
+                if( responses )
+                {
+                    console.log( responses );
+                    for( var i = 0; i < httpRequest.responseText.length; i++ )
+                    {
+                        var response = responses[i];
+                        if( response )
+                        {
+                            console.log( response );
+                            var title = response.title;
+                            var comment = response.comment;
+                            var iconType = response.person;
+                            if( title !== null && comment !== null && iconType !== null )
+                            {
+                                person = iconType;
+                                AppendComment( iconType, title, comment );
+                            }
+                            else
+                            {
+                                $( "#error" ).attr( "style", "visibility: visible" );
+                                document.getElementById( "error" ).innerHTML = "MongoDb server response invalid. Using WebSql.";
+                                QueryWebSql();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    $( "#error" ).attr( "style", "visibility: visible" );
+                    document.getElementById( "error" ).innerHTML = "MongoDb server response invalid. Using WebSql.";
+                    QueryWebSql();
+                }
+            }
+            else if( httpRequest.readyState === 4 && httpRequest.status === 0 )
+            {
+                console.log( "twork eror" );
+                $( "#error" ).attr( "style", "visibility: visible; color: red;" );
+                document.getElementById( "error" ).innerHTML = "You have no MongoDb server running with Node JS, please run 'groupAssignment.js'. Defaulting to using WebSql for now.";
+                QueryWebSql();   
+            }
+        }
+            
+        function InsertMongoDb( person, title, comment )
+        {
+            var blogData = {};
+            blogData['blogType']    = "socketIo";
+            blogData['title']       = title;
+            blogData['comment']     = comment;
+            blogData['person']      = person;
+
+            httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = handleInsertResponse;
+            httpRequest.open( "POST", "http://localhost:8080/blog/saveBlog" );
+            httpRequest.setRequestHeader( "Content-Type", "application/json" );
+            httpRequest.send( JSON.stringify( blogData ) ); 
+        }
+            
+        function handleInsertResponse() 
+        {
+            if( httpRequest.readyState === 4 && httpRequest.status === 200 )
+            {
+                console.log( JSON.parse( httpRequest.responseText ).response );
+            }
+        }
+        
+        document.onload = QueryMongoDb();
+        
+    </script>
+
+</head>
+
+<body>
+    
+    <!-- Load header -->    
+    <div id="header"></div>
+    <br>
+    
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-2" >
+                <div class="list-group">
+                    <a href="blogVacation.html" class="list-group-item">
+                        <h5 class="list-group-item-heading">Best vacaction spot in 2015</h5>
+                    </a>
+                    <a href="blogSocketIo.html" class="list-group-item active">
+                        <h5 class="list-group-item-heading">All about Socket.IO</h5>
+                    </a>
+                    <a href="blogWebSocket.html" class="list-group-item">
+                        <h5 class="list-group-item-heading">Websockets is in</h5>
+                    </a>
+                    <a href="blogLocalStorage.html" class="list-group-item">
+                        <h5 class="list-group-item-heading">Local Storage</h5>
+                    </a>
+                </div>
+            </div>         
+
+            <div class="col-md-8" >
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img class="img-responsive" src="./img/SocketIo.png">
+                        <h4>Socket.IO brings multiplayer for everyone.</h4>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    </div>
+                    <div class="panel-footer">
+                        <div class="media">
+                            <div class="pull-left">
+                                <img class="media-object" src="./img/avatar1.png">
+                            </div>
+                            <div class="media-body">
+                                <p><small> by</small> Darrel Pham | Oct 23rd, 2015</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+        
+                <div class="row">
+                    <div class="col-md-6 col-centered">
+                            <form class="form-horizontal" action="javascript:AddNewComment()">
+
+                                <div class="form-group">
+                                    <input type="text" required class="form-control" id="title" placeholder="Title" />
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea class="form-control"  rows="7" required id="comment" placeholder="Your Comments -> Saved to NodeJs + Mongob -> Backup WebSQL"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Add Comment (Try it)</button>
+
+                            </form>
+                        
+                            <br>   
+                            <label id="error" style="visibility: hidden; color: red;">Comments cannot be retrieved.</label>
+                    </div>
+                </div>
+
+                <br>        
+
+                <div class="row">
+                    <div class="col-md-8 col-centered">
+                        <br>
+                        <div id="newComment"></div>                        
+
+                        <div class="media">
+                            <a class="pull-right" href="#">
+                                <img class="media-object" src="./img/Person1.png">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Is this a library or a new solution?</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            </div>	            
+                        </div>
+
+
+                        <!-- Second Media Object -->
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="./img/Person2.png">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Should I switch to Socket.IO?</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            
+            </div>       
+                
+            <div class="col-md-2" >
+                
+                <div class="row">
+                    <div class="thumbnail">
+                        <img src="./img/BigData.png">
+                        <div class="caption">
+                            <h3>Big Data</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p><a href="http://www.ibm.com/big-data/us/en/" class="btn btn-primary">Read More</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="thumbnail">
+                        <img src="./img/IOT.png">
+                        <div class="caption">
+                            <h3>IOT</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p><a href="http://www.forbes.com/sites/centurylink/2015/10/23/welcome-to-the-iot-please-check-your-security-at-the-door/" class="btn btn-primary">Read More</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="thumbnail">
+                        <img src="./img/Mobile.png">
+                        <div class="caption">
+                            <h3>Mobile Cloud</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p><a href="https://experitest.com/top-10-benefits-of-cloud-testing/" class="btn btn-primary">Read More</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            
+        </div>
+        
+        
+        <div class="row">
+            <hr>
+            <div id="twitter"></div>
+            <hr>
+        </div>
+    
+        <br>        
+        <!-- Load header -->    
+        <div id="footer"></div>
+    </div>
+        
+</body>
+
+
+
+<script>
+    $("#header").load("header.html");
+    $("#twitter").load("twitter.html");
+    $("#footer").load("footer.html");
+</script>
+
+</html>
