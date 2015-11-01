@@ -21,20 +21,22 @@ db.once('open', function callback () {
 
 var app = express();
 
-var bdbSchema = new mongoose.Schema({
+var bSchema = new mongoose.Schema({
     bfname: String,
     blname: String,
     bemail: String
 });
 
-var bdwSchema = new mongoose.Schema({
+var wSchema = new mongoose.Schema({
     wfname: String,
     wlname: String,
     wemail: String
 });
 
-var bdbregistration = mongoose.model('bdbuser', bdbSchema);
-var bdwregistration = mongoose.model('bdwuser', bdwSchema);
+var bdbregistration = mongoose.model('bdbuser', bSchema);
+var bdwregistration = mongoose.model('bdwuser', wSchema);
+var iotbregistration = mongoose.model('iotbuser', bSchema);
+var iotwregistration = mongoose.model('iotwuser', wSchema);
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -69,9 +71,9 @@ app.get('/', function(req, res){
 //bigdata brochure
 app.post('/bdb', function(req, res){
     new bdbregistration({
-    	bfname: req.body.bfname,
-    	blname: req.body.blname,
-    	bemail: req.body.bemail
+      bfname: req.body.bfname,
+      blname: req.body.blname,
+      bemail: req.body.bemail
     }).save(function(err, doc){
       if(err) res.json(err);
       else    res.send('Successfully inserted!');
@@ -80,15 +82,36 @@ app.post('/bdb', function(req, res){
 //bigdata whitepaper
 app.post('/bdw', function(req, res){
     new bdwregistration({
-    	wfname: req.body.wfname,
-    	wlname: req.body.wlname,
-    	wemail: req.body.wemail
+      wfname: req.body.wfname,
+      wlname: req.body.wlname,
+      wemail: req.body.wemail
     }).save(function(err, doc){
       if(err) res.json(err);
       else    res.send('Successfully inserted!');
     });
   });
-
+//iot brochure
+app.post('/iotb', function(req, res){
+    new iotbregistration({
+      bfname: req.body.bfname,
+      blname: req.body.blname,
+      bemail: req.body.bemail
+    }).save(function(err, doc){
+      if(err) res.json(err);
+      else    res.send('Successfully inserted!');
+    });
+  });
+//iot whitepaper
+app.post('/iotw', function(req, res){
+    new iotwregistration({
+      wfname: req.body.wfname,
+      wlname: req.body.wlname,
+      wemail: req.body.wemail
+    }).save(function(err, doc){
+      if(err) res.json(err);
+      else    res.send('Successfully inserted!');
+    });
+  });
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

@@ -184,21 +184,27 @@ footer a:hover {
                         <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                             <h4 class="modal-title">Download Brochure</h4>
+                             <h4 class="modal-title">Internet of Things Brochure</h4>
                         </div>
                         <div class="modal-body">
-                            <form role="form">
+                        <center>
+                            <form id="regis" class="form-inline" role="form" action="http://localhost:3000/iotb" method="post">
                                 <div class="form-group">
-                                    <label align="left" >Firstname:<input type="text"  id="fname" placeholder="firstname"></label><br>
-                                    <label align="left">Lastname:<input type="text" id="lname" placeholder="lastname"></label><br>
-                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" id="email" placeholder="Enter email"></label><br>
+                                    <label align="left" >Firstname:&nbsp <input type="text" class="form-control"  id="bfname" placeholder="firstname" required /></label><br>
+                                    <label align="left">Lastname:&nbsp <input type="text" class="form-control" id="blname" placeholder="lastname" required /></label><br>
+                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" class="form-control" id="bemail" placeholder="Enter email" required /></label>
+                                    
+                                    <button type="submit" class="btn2 btn-default btn-block" onclick="bcheck();" ><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                                    <button type="button" class="btn1 btn-danger btn-default " data-dismiss="modal" >
+                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
                                 </div>
-                                <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                                
                             </form>
+                            </center>
                         </div>
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                           
                             <p>Need <a href="#">help?</a></p>
                         </div>
                         </div>
@@ -217,27 +223,33 @@ footer a:hover {
                         <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                             <h4 class="modal-title">Download IOT White Paper</h4>
+                             <h4 class="modal-title">Internet of Things White Paper</h4>
                         </div>
                         <div class="modal-body">
-                            <form role="form">
+                        <center>
+                            <form id="regis1" class="form-inline" role="form" action="http://localhost:3000/iotw" method="post">
                                 <div class="form-group">
-                                    <label align="left" >Firstname:<input type="text"  id="fname" placeholder="firstname"></label><br>
-                                    <label align="left">Lastname:<input type="text" id="lname" placeholder="lastname"></label><br>
-                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" id="email" placeholder="Enter email"></label><br>
+                                    <label align="left" >Firstname:&nbsp <input type="text" class="form-control"  id="wfname" placeholder="firstname" required /></label><br>
+                                    <label align="left">Lastname:&nbsp <input type="text" class="form-control" id="wlname" placeholder="lastname" required / ></label><br>
+                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" class="form-control" id="wemail" placeholder="Enter email" required /></label>
+                                    
+                                    <button type="submit" class="btn2 btn-default btn-block" onclick="wcheck();" ><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                                    <button type="button" class="btn1 btn-danger btn-default " data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
                                 </div>
-                                <a type="button" class="btn btn-default btn-block" href="iot.pdf" target="_blank"><span class="glyphicon glyphicon-download-alt"></span>Download</a>
+                                
                             </form>
+                            </center>
                         </div>
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
                             <p>Need <a href="#">help?</a></p>
                         </div>
                         </div>
       
                         </div>
                     </div>
+                <!-- End of modal -->
 
             </div>
             <div class="col-md-8 bg-middle ">
@@ -314,6 +326,7 @@ footer a:hover {
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   <p>Copyright &copy; Live Wires 2015</p> 
 </footer>
+<script type="text/javascript" src="saveDataMongoiot.js"></script>
 </body>
 
 </html>
