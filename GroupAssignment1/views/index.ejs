@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <!-- Latest compiled and minified jQuery library CDN -->
+      <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+   <!-- <link rel='stylesheet' href='/stylesheets/style.css' />-->
+   <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/modern-business.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/styles.css" rel="stylesheet">
+   
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">     
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="./img/logo.png"></img></a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                       
+                        <a href="index.html">Home</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="mobile-page.html">Mobile</a>
+                            </li>
+                            <li>
+                                <a href="bigdata-page.html">Big Data</a>
+                            </li>
+                            <li>
+                                <a href="iot-page.html">IoE/IoT</a>
+                            </li>
+                        </ul>
+                    </li><li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                             <li>
+                                <a href="management.html">Management</a>
+                            </li>
+                            <li>
+                                <a href="coc.html">Code of Conduct</a>
+                            </li>
+                            <li>
+                                <a href="business_process.html">Business Process</a>
+                            </li>
+                            <li>
+                                <a href="location.html">Locations</a>
+                            </li>
+                            <li>
+                                <a href="contact_us.html">Contact Us</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<a name="myPage" > </a>
+    <div class="container-fluid bg-head">
+        <h3 class="text-center bg-head">Big Data</h3>
+    </div>
+
+    <div class="container-fluid bg-page">
+        <div class="row">
+        <!-- Brochure and download-->
+            <div class="col-md-2">
+                <br><br><br><!--<br><br><br><br><br><br><br><br><br>-->
+                    <button type="button" class="btn" data-toggle="modal" data-target="#myModal" style="width:200px;height:70px">Brochure</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             <h4 class="modal-title">BIG DATA Brochure</h4>
+                        </div>
+                        <div class="modal-body">
+                        <center>
+                            <form class="form-inline" role="form" action="https://www.emc.com/collateral/brochure/h10769-big-data-cta-brochure.pdf" target="_blank">
+                                <div class="form-group">
+                                    <label align="left" >Firstname:&nbsp <input type="text" class="form-control"  id="fname" placeholder="firstname" required /></label><br>
+                                    <label align="left">Lastname:&nbsp <input type="text" class="form-control" id="lname" placeholder="lastname" required /></label><br>
+                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" class="form-control" id="email" placeholder="Enter email" required /></label>
+                                    
+                                    <button type="submit" class="btn2 btn-default btn-block"><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                                    <button type="button" class="btn1 btn-danger btn-default " data-dismiss="modal" >
+                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
+                                </div>
+                                
+                            </form>
+                            </center>
+                        </div>
+                        <div class="modal-footer">
+                           
+                            <p>Need <a href="#">help?</a></p>
+                        </div>
+                        </div>
+      
+                        </div>
+                    </div>
+                
+                <!--Download paper-->
+                <br><br><br><br><br>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#bdModal" style="width:200px;height:70px">White Paper</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="bdModal" role="dialog">
+                        <div class="modal-dialog">
+    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             <h4 class="modal-title">Big Data White Paper</h4>
+                        </div>
+                        <div class="modal-body">
+                        <center>
+                            <form class="form-inline" role="form" action="http://www.oracle.com/us/products/database/big-data-for-enterprise-519135.pdf" target="_blank">
+                                <div class="form-group">
+                                    <label align="left" >Firstname:&nbsp <input type="text" class="form-control"  id="fname" placeholder="firstname" required /></label><br>
+                                    <label align="left">Lastname:&nbsp <input type="text" class="form-control" id="lname" placeholder="lastname" required / ></label><br>
+                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" class="form-control" id="email" placeholder="Enter email" required /></label>
+                                    
+                                    <button type="submit" class="btn2 btn-default btn-block" ><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                                    <button type="button" class="btn1 btn-danger btn-default " data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
+                                </div>
+                                
+                            </form>
+                            </center>
+                        </div>
+                        <div class="modal-footer">
+                            <p>Need <a href="#">help?</a></p>
+                        </div>
+                        </div>
+      
+                        </div>
+                    </div>
+
+            </div>
+            <div class="col-md-7 bg-middle">
+            <div class="panel-body">
+                <p>According to IDC's prediction in 2013, the market for big data will reach $16.1 billion in 2014, growing 6 times faster than the overall IT marker. This kind of business analysis reports bring great business opportunities and strong research interests among both academic and industry communities. Recently our Big Data Sciences and Analytics, and Big Data Technology and Engineering.</p>
+                
+                <div class="row ">
+                <div class="col-md-4 col-md-offset-2">
+                <p>
+                    <!--<video src="./img/Galaxy_Collision_Nasa.mp4"></video>id="vid" width="450" height="350"-->
+                    <video id="vid" controls poster="./img/bigdata.jpeg">
+                        <source src="./img/Big_Data_Animation_Video.mp4" type="video/mp4">
+                    </video>
+                </p>
+               </div>
+                &nbsp;&nbsp;
+                
+                </div>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <p class="bg-1">Customer Reviews</p>
+                <ul class="nav nav-list">
+                <li class="bg-info">
+                <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star grey"></span><label for="review">No other resource quite like it</label>
+                <p>I've looked at several other books on various aspects of the Big Data ecosystem before, and found most of them to be kind of smack-in-the-middle, and unsuitable for my purposes... -Nivedhitha</p></li>
+                <li class="bg-success">
+                <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star grey"></span><span class="glyphicon glyphicon-star grey"></span></span><label for="review">Very good paper to learn about Big Data</label>
+                <p>For me, this is a very good paper to know all the options out there when it comes to tackling the problem of managing very large quantities of data and emerge unscathed in the attempt... -Hermione</p></li>
+                <li class="bg-danger">
+                <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star grey"></span><label for="review">A nice update to my knowledge I hope to apply soon</label>
+                <p>Deep and detailed description of a complete solution for a massive data tratement system. This kind of architecture is really effective and in fact was applied by me about 20 years ago (when there wee no "big data" systems) to a real time historical stock exchange system,... -Ron</p></li>
+                </ul>
+            </div>
+        </div>   
+</div>
+    </div>
+        <hr>
+
+        <footer class="text-center">
+        <div class="row">
+            <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+            </a><br><br>
+  <a class="twitter-timeline" width="600" height="150" data-border-color="#00ff00" href="https://twitter.com/BigDataBigData" data-widget-id="657429662373572608">Tweets by @BigDataBigData</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <center><p>Copyright &copy; Live Wires 2015</p><center>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+   
+    <script src="js/jquery.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    
+  </body>
+</html>

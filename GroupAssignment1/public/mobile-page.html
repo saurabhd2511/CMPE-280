@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Mobile Landing Page</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body >
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">     
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="./img/logo.png"></img></a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                       
+                        <a href="index.html">Home</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="mobile-page.html">Mobile</a>
+                            </li>
+                            <li>
+                                <a href="bigdata-page.html">Big Data</a>
+                            </li>
+                            <li>
+                                <a href="iot-page.html">IoE/IoT</a>
+                            </li>
+                        </ul>
+                    </li><li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                             <li>
+                                <a href="management.html">Management</a>
+                            </li>
+                            <li>
+                                <a href="coc.html">Code of Conduct</a>
+                            </li>
+                            <li>
+                                <a href="business_process.html">Business Process</a>
+                            </li>
+                            <li>
+                                <a href="location.html">Locations</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">Contact Us</a>
+                            </li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="blogVacation.html">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid bg-head">
+        <h3 class="text-center bg-head">Mobile</h3>
+    </div>
+    <div class="container-fluid bg-page">
+        <div class="row">
+            <div class="col-md-2">
+                <br><br><br><!--<br><br><br><br><br><br><br><br><br>-->
+                    <button type="button" class="btn" data-toggle="modal" data-target="#myModal" style="width:200px;height:70px">Brochure</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             <h4 class="modal-title">Download Brochure</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label align="left" >Firstname:<input type="text"  id="fname" placeholder="firstname"></label><br>
+                                    <label align="left">Lastname:<input type="text" id="lname" placeholder="lastname"></label><br>
+                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" id="email" placeholder="Enter email"></label><br>
+                                </div>
+                                <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <p>Need <a href="#">help?</a></p>
+                        </div>
+                        </div>
+      
+                        </div>
+                    </div>
+                
+                <!--Download paper-->
+                <br><br><br><br><br>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#iotModal" style="width:200px;height:70px">White Paper</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="iotModal" role="dialog">
+                        <div class="modal-dialog">
+    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             <h4 class="modal-title">Download Big Data White Paper</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label align="left" >Firstname:<input type="text"  id="fname" placeholder="firstname"></label><br>
+                                    <label align="left">Lastname:<input type="text" id="lname" placeholder="lastname"></label><br>
+                                    <label align="right">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" id="email" placeholder="Enter email"></label><br>
+                                </div>
+                                <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-download-alt"></span>Download</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <p>Need <a href="#">help?</a></p>
+                        </div>
+                        </div>
+      
+                        </div>
+                    </div>
+
+            </div>
+            <div class="col-md-7 bg-middle">
+            <div class="panel-body">
+                <p>Mobile platform has been at the center stage of technology innovation from the past few years and has witnessed massive growth in terms of user adoption and market penetration. Growth in mobile platforms has played a pivotal role in supporting digital marketing and enterprise mobility. Organizations today are gearing up by developing applications for various mobile platforms like iOS, Android and Windows Phone. Large organizations in various sectors like finance, manufacturing, retail etc. are moving towards workforce mobility in which they are enabling their employees to work through devices like smart phones, tablets and laptops. This is driving the development of a large number of enterprise mobile applications, which help maximize the productivity of the workforce.</p>
+                
+                <div class="row ">
+                <div class="col-md-4 col-md-offset-2">
+                <p>
+                    <!--<video src="./img/Galaxy_Collision_Nasa.mp4"></video>id="vid" width="450" height="350"-->
+                    <video id="vid" controls poster="./img/mobile_l.jpg">
+                        <source src="./img/Big_Data_Animation_Video.mp4" type="video/mp4">
+                    </video>
+                </p>
+               </div>
+                &nbsp;&nbsp;
+                
+                </div>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <p class="bg-1">Customer Reviews</p>
+                <ul class="nav nav-list">
+                <li class="bg-info">
+                <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star grey"></span><label for="review">No other resource quite like it</label>
+                <p>the ability to delete default BS apps added by apple. the ability to change my default browser, or map software, etc... some shift away from Apple Lock-in.... -Greg</p></li>
+                <li class="bg-success">
+                <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star grey"></span><span class="glyphicon glyphicon-star grey"></span></span><label for="review">Very good paper to learn about Big Data</label>
+                <p>For me, this is a very good paper to know all the options out there when it comes to tackling the problem of managing very large quantities of data and emerge unscathed in the attempt... -Hermione</p></li>
+                <li class="bg-danger">
+                <span class="glyphicon glyphicon-star yellow"></span>
+                <span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star yellow"></span><span class="glyphicon glyphicon-star grey"></span><label for="review">A nice update to my knowledge I hope to apply soon</label>
+                <p>Deep and detailed description of a complete solution for a massive data tratement system. This kind of architecture is really effective and in fact was applied by me about 20 years ago (when there wee no "big data" systems) to a real time historical stock exchange system,... -Ron</p></li>
+                </ul>
+            </div>
+        </div>   
+</div>
+    </div>
+        <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <center><p>Copyright &copy; Live Wires 2015</p><center>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+   
+    <script src="js/jquery.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
