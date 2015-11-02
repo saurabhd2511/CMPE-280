@@ -37,6 +37,8 @@ var bdbregistration = mongoose.model('bdbuser', bSchema);
 var bdwregistration = mongoose.model('bdwuser', wSchema);
 var iotbregistration = mongoose.model('iotbuser', bSchema);
 var iotwregistration = mongoose.model('iotwuser', wSchema);
+var mobilebregistration = mongoose.model('mobilebuser', bSchema);
+var mobilewregistration = mongoose.model('mobilewuser', wSchema);
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -112,6 +114,29 @@ app.post('/iotw', function(req, res){
       else    res.send('Successfully inserted!');
     });
   });
+//mobile brochure
+app.post('/mobileb', function(req, res){
+    new mobilebregistration({
+      bfname: req.body.bfname,
+      blname: req.body.blname,
+      bemail: req.body.bemail
+    }).save(function(err, doc){
+      if(err) res.json(err);
+      else    res.send('Successfully inserted!');
+    });
+  });
+//mobile whitepaper
+app.post('/mobilew', function(req, res){
+    new mobilewregistration({
+      wfname: req.body.wfname,
+      wlname: req.body.wlname,
+      wemail: req.body.wemail
+    }).save(function(err, doc){
+      if(err) res.json(err);
+      else    res.send('Successfully inserted!');
+    });
+  });
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
